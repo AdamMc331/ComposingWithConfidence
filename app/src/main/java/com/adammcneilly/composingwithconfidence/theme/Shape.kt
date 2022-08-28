@@ -1,4 +1,4 @@
-package template.theme
+package com.adammcneilly.composingwithconfidence.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
