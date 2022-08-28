@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'app.cash.paparazzi'
 }
 
 android {
@@ -14,6 +15,13 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.3.0"
+        kotlinCompilerVersion kotlinVersion
+    }
     buildTypes {
         release {
             minifyEnabled false
