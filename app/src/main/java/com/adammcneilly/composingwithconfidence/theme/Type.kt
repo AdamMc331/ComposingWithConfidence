@@ -1,4 +1,4 @@
-package template.theme
+package com.adammcneilly.composingwithconfidence.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
