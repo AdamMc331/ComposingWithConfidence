@@ -7,3 +7,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Composing With Confidence"
 include ':app'
+include ':designsystem'
