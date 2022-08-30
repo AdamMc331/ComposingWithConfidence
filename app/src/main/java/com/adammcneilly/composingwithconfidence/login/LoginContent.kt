@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -22,13 +23,16 @@ fun LoginContent(
 ) {
     Column(
         modifier = modifier
-            .padding(16.dp),
+            .padding(16.dp)
+            .testTag("login_content"),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         CWCTextField(
             text = viewState.username,
             onTextChanged = onUsernameChanged,
             labelText = "Username",
+            modifier = Modifier
+                .testTag("username_text_field"),
         )
 
         CWCTextField(
@@ -39,12 +43,16 @@ fun LoginContent(
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Password,
             ),
+            modifier = Modifier
+                .testTag("password_text_field"),
         )
 
         PrimaryButton(
             text = "Login",
             onClick = onLoginClicked,
             enabled = viewState.submitButtonEnabled,
+            modifier = Modifier
+                .testTag("login_button"),
         )
     }
 }
