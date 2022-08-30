@@ -3,8 +3,10 @@ package com.adammcneilly.composingwithconfidence.login
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.adammcneilly.composingwithconfidence.designsystem.components.CWCTextField
@@ -34,6 +36,9 @@ fun LoginContent(
             onTextChanged = onPasswordChanged,
             labelText = "Password",
             visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Password,
+            ),
         )
 
         PrimaryButton(
