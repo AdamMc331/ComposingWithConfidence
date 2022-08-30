@@ -4,11 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults.TextFieldShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -61,7 +61,7 @@ fun CWCTextField(
             value = text,
             onValueChange = onTextChanged,
             label = labelComposable,
-            shape = TextFieldShape,
+            shape = RoundedCornerShape(50),
             modifier = modifier
                 .heightIn(48.dp)
                 .fillMaxWidth()
