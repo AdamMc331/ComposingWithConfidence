@@ -4,6 +4,10 @@ import app.cash.paparazzi.Paparazzi
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * These [Paparazzi] tests render various implementations of a [CWCTextField]
+ * and compares the screenshot to the golden values in the snapshots folder.
+ */
 class CWCTextFieldPaparazziTest {
     @get:Rule
     val paparazzi = Paparazzi()
