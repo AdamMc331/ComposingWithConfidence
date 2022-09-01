@@ -1,5 +1,6 @@
 package com.adammcneilly.composingwithconfidence.login
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.ComposeTestRule
@@ -10,6 +11,7 @@ import androidx.compose.ui.test.performTextInput
 class LoginScreenRobot(
     composeTestRule: ComposeTestRule,
 ) {
+    private val loginScreenContent = composeTestRule.onNodeWithTag("login_content")
     private val usernameInput = composeTestRule.onNodeWithTag("username_text_field")
     private val passwordInput = composeTestRule.onNodeWithTag("password_text_field")
     private val loginButton = composeTestRule.onNodeWithTag("login_button")
@@ -32,6 +34,10 @@ class LoginScreenRobot(
 
     fun verifyLoginButtonDisabled() {
         loginButton.assertIsNotEnabled()
+    }
+
+    fun verifyScreenVisible() {
+        loginScreenContent.assertIsDisplayed()
     }
 }
 

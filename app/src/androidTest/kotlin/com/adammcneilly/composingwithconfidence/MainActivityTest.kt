@@ -28,4 +28,22 @@ class MainActivityTest {
             verifyLabelDisplayed()
         }
     }
+
+    @Test
+    fun attemptLoginWithoutPassword() {
+        loginScreenRobot(composeTestRule) {
+            enterUsername("adammc331")
+            clickLoginButton()
+            verifyScreenVisible()
+        }
+    }
+
+    @Test
+    fun attemptLoginWithoutUsername() {
+        loginScreenRobot(composeTestRule) {
+            enterPassword("Hunter2")
+            clickLoginButton()
+            verifyScreenVisible()
+        }
+    }
 }
