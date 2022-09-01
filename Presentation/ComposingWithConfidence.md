@@ -8,10 +8,6 @@ build-lists: true
 
 ---
 
-# Testing Is Important
-
----
-
 # With New Tools Comes New Responsibilities
 
 ---
@@ -34,7 +30,9 @@ build-lists: true
 ```kotlin
 class PrimaryButtonTest {
 
-	// When testing individual components, we can just create a compose rule.
+	/**
+     * Use createComposeRule to test individual composable functions.
+     */
 	@get:Rule
 	val composeTestRule = createComposeRule()
 }
@@ -44,15 +42,12 @@ class PrimaryButtonTest {
 
 # Compose Rule Setup
 
-[.code-highlight: 7-9]
 ```kotlin
 class PrimaryButtonTest {
 
-	// When testing individual components, we can just create a compose rule.
-	@get:Rule
-	val composeTestRule = createComposeRule()
-
-	// When testing activities, use androidComposeRule.
+	/**
+     * Use createAndroidComposeRule to start up a specific activity.
+     */
 	@get:Rule
 	val composeTestRule = createAndroidComposeRule<MainActivity>()
 }
@@ -63,19 +58,11 @@ class PrimaryButtonTest {
 # Rendering Content
 
 ```kotlin
-class PrimaryButtonTest {
-
-	// ...
-
-	@Test
-	fun renderEnabledButton() {
-		composeTestRule.setContent {
-			PrimaryButton(
-				text = "Test Button",
-				enabled = true,
-			)
-		}
-	}
+@Test
+fun renderEnabledButton() {
+    composeTestRule.setContent {
+        PrimaryButton(...)
+    }
 }
 ```
 
@@ -91,12 +78,10 @@ class PrimaryButtonTest {
 composeTestRule.onNodeWithText("Test Button")
 
 // Make assertion
-composeTestRule.onNodeWithText("Test Button")
-	.assertIsEnabled()
+composeTestRule.onNode(...).assertIsEnabled()
 
 // Perform action
-composeTestRule.onNodeWithText("Test Button")
-	.performClick()
+composeTestRule.onNode(...).performClick()
 ```
 
 ---
@@ -104,8 +89,6 @@ composeTestRule.onNodeWithText("Test Button")
 # Finding Components
 
 ---
-
-# Finding Components
 
 ```kotlin
 composeTestRule.onNode(matcher)
@@ -115,8 +98,6 @@ composeTestRule.onNode(isDialog())
 ```
 
 ---
-
-# Finding Components
 
 [.code-highlight: 6-9]
 ```kotlin
@@ -133,8 +114,6 @@ composeTestRule.onNodeWithContentDescription("")
 
 ---
 
-# Finding Components
-
 ```kotlin
 composeTestRule.onAllNodes(matcher)
 
@@ -147,34 +126,26 @@ composeTestRule.onAllNodesWithText("")
 
 ---
 
-# Making Assertions
-
 ```kotlin
-composeTestRule
-	.onNode(...)
-	.assert(matcher)
+composeTestRule.onNode(...)
+    .assert(matcher)
 
-composeTestRule
-	.onNode(...)
+composeTestRule.onNode(...)
 	.assert(hasText("Test Button"))
 
-composeTestRule
-	.onNode(...)
+composeTestRule.onNode(...)
 	.assert(isEnabled())
 ```
 
 ---
 
-# Making Assertions
-
+[.code-highlight: 4-6]
 ```kotlin
-composeTestRule
-	.onNode(...)
+composeTestRule.onNode(...)
 	.assert(hasText("Test Button"))
 
 // Helpers
-composeTestRule
-	.onNode(...)
+composeTestRule.onNode(...)
 	.assertTextEquals("Test Button")
 ```
 
@@ -184,15 +155,11 @@ composeTestRule
 
 ---
 
-# Performing Actions
-
 ```kotlin
-composeTestRule
-	.onNode(...)
+composeTestRule.onNode(...)
 	.performClick()
 
-composeTestRule
-	.onNode(...)
+composeTestRule.onNode(...)
 	.performTextInput(...)
 ```
 
@@ -210,8 +177,6 @@ composeTestRule
 
 ---
 
-# Test Tags
-
 ```kotlin
 // In app
 PrimaryButton(
@@ -227,8 +192,6 @@ composeTestRule.onNodeWithTag("login_button")
 # Let's Test A Component
 
 ---
-
-# Primary Button
 
 [.code-highlight: all]
 [.code-highlight: 5]
@@ -282,9 +245,7 @@ composeTestRule.setContent {
 # Verify Behavior
 
 ```kotlin
-composeTestRule
-    .onNodeWithText("Test Button")
-    .performClick()
+composeTestRule.onNodeWithText("Test Button").performClick()
 
 assertTrue(wasClicked)
 ```
@@ -377,8 +338,6 @@ composeTestRule
 
 ---
 
-# Full Test
-
 ```kotlin
 @Test
 fun successfulLogin() {
@@ -436,7 +395,6 @@ class LoginScreenRobot(
 
 ```kotlin
 class LoginScreenRobot {
-    // ...
 
     fun enterUsername(username: String) {
         usernameInput.performTextInput(username)
@@ -445,6 +403,7 @@ class LoginScreenRobot {
     fun enterPassword(password: String) {
         passwordInput.performTextInput(password)
     }
+}
 ```
 
 ---
@@ -462,8 +421,6 @@ fun loginScreenRobot(
 
 ---
 
-# Kotlin Magic
-
 ```kotlin
 loginScreenRobot(composeTestRule) {
     verifyLoginButtonDisabled()
@@ -475,8 +432,6 @@ loginScreenRobot(composeTestRule) {
 ```
 
 ---
-
-# Kotlin Magic
 
 ```kotlin
 @Test
